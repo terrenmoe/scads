@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="0.92.5 (0.92.5+68)"
+   sodipodi:docname="beadBin2.svg"
+   id="svg4967"
+   version="1.1"
+   viewBox="0 0 88 46.099"
+   height="46.099mm"
+   width="88mm">
+  <defs
+     id="defs4961" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="400"
+     inkscape:cy="560"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="mm"
+     inkscape:snap-midpoints="true"
+     scale-x="3.77953">
+    <sodipodi:guide
+       inkscape:locked="false"
+       position="11.6417,128.139"
+       orientation="46.099,0"
+       id="guide4813" />
+    <sodipodi:guide
+       inkscape:locked="false"
+       position="0,134.238"
+       orientation="0,88.0"
+       id="guide4815" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata4964">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-38.472,-777.46)">
+    <path
+       style="opacity:1;vector-effect:none;fill:#000000;fill-opacity:0.496078;fill-rule:nonzero;stroke:none;stroke-width:2.001601;stroke-miterlimit:4;stroke-dasharray:2.001602, 4.003204;stroke-dashoffset:0;paint-order:markers fill stroke"
+       d="M 56.5648,777.46 38.472,792.843 V 808.177 L 56.5648,823.559 H 121.216 C 124.128,823.559 126.472,821.329 126.472,818.559 V 782.46 C 126.472,779.69 124.128,777.46 121.216,777.46 Z"
+       id="rect4744"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccssssc"
+       inkscape:tile-cx="44"
+       inkscape:tile-cy="23.0495"
+       inkscape:tile-w="88"
+       inkscape:tile-h="46.099"
+       inkscape:tile-x0="0"
+       inkscape:tile-y0="0" />
+  </g>
+</svg>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="88"
+   height="46.099"
+   viewBox="0 0 88 46.099"
+   version="1.1"
+   id="svg4967">
+  <defs
+     id="defs4961" />
+  <metadata
+     id="metadata4964">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-38.472,-777.46)"
+     id="layer1">
+    <path
+       d="M 65.2002,785.143 53.1381,795.399 V 805.621 L 65.2002,815.876 H 108.302 C 110.243,815.876 111.806,814.39 111.806,812.543 V 788.476 C 111.806,786.63 110.243,785.143 108.302,785.143 Z M 63.0414,783.222 49.4716,794.759 V 806.26 L 63.0414,817.796 H 111.53 C 113.714,817.796 115.472,816.124 115.472,814.046 V 786.972 C 115.472,784.894 113.714,783.222 111.53,783.222 Z M 60.8825,781.302 45.8051,794.121 V 806.899 L 60.8825,819.718 H 114.759 C 117.186,819.718 119.139,817.859 119.139,815.551 V 785.468 C 119.139,783.16 117.186,781.302 114.759,781.302 Z M 58.7236,779.381 42.1385,793.482 V 807.538 L 58.7236,821.638 H 117.987 C 120.657,821.638 122.805,819.594 122.805,817.055 V 783.964 C 122.805,781.425 120.657,779.381 117.987,779.381 Z M 56.5648,777.46 38.472,792.843 V 808.177 L 56.5648,823.559 H 121.216 C 124.128,823.559 126.472,821.329 126.472,818.559 V 782.46 C 126.472,779.69 124.128,777.46 121.216,777.46 Z M 56.5648,777.46 38.472,792.843 V 808.177 L 56.5648,823.559 H 121.216 C 124.128,823.559 126.472,821.329 126.472,818.559 V 782.46 C 126.472,779.69 124.128,777.46 121.216,777.46 Z"
+       style="opacity:1;vector-effect:none;fill:#000000;fill-opacity:0.496078;fill-rule:nonzero;stroke:none;stroke-width:1.334427;stroke-miterlimit:4;stroke-dasharray:1.334428, 2.668856;stroke-dashoffset:0;paint-order:markers fill stroke"
+       id="use5005" />
+  </g>
+  <g
+     id="layer2" />
+</svg>

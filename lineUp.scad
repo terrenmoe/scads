@@ -7,11 +7,19 @@ function whichAxis(axis = "x") = [
   len(search("z", axis, 1))
 ];
 
-module lineUp(num = 2, space = 1, axis = "x", offsetVector = [0,0,0]) {
-// echo(num, space, whichAxis(axis));
+module lineUp(
+  num = 2,
+  space = 1,
+  axis = "x",
+  offsetVector = [0, 0, 0],
+  scalar = [1, 1, 1]
+) {
+  // echo(num, space, whichAxis(axis));
   if (num > 1) {
-      for (i = [0 : num - 1])
-        translate(offsetVector + (whichAxis(axis) * (space * i))) children(0);
+    for (i = [0 : num - 1])
+      scale(scalar * whichAxis(axis))
+      translate(offsetVector + whichAxis(axis) * (space * i))
+      children(0);
   } else {
     echo ("num must be positive but is :", num);
   }

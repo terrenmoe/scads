@@ -1,71 +1,33 @@
 use <lineUp.scad>
 use <mcad/utilities.scad>
+use <mcad/regular_shapes.scad>
+use <mirrorCopy.scad>
 
-baseShapeHeight = 10;
-origin = [0, 0];
-common = [56, 126];
-max_points = [56, 136];
-cylinderHeight = 100;
-cylinderD1 = 0.4;
-cylinderD2 = 0.4;
-spacing = 4;
-numOfCylinders = 13;
-rotationVector = [270, 90, 0];
-translationVector = [-6.5, -spacing * numOfCylinders, 0];
-$fa = 1;
-$fs = 8;
+octoH = 76;
+octoR = 1.2;
+$fn=6;
+union(){
+  // sidewalls
+  linear_extrude(height = 5, scale=[1.2, 1.2])
+  import("beadBin.svg", dpi = 96, center = true);
 
-nose_points = [
-  [origin.x, common.y],
-  common,
-  [39, max_points.y],
-  [19, max_points.y]
-];
-
-sq_points = [
-  origin,
-  [common.x, origin.y],
-  common,
-  [origin.x, common.y]
-];
-
-module baseShape(h = 0) {
-  linear_extrude(
-    slices = 2,
-    twist = 0,
-    height = baseShapeHeight + h,
-    convexity = 3,
-    scale = [1, 12/16]
-  )
-  union() {
-    polygon(nose_points);
-    polygon(sq_points);
-  }
-}
-
-module binShape() {
-  difference() {
-    baseShape();
-    scale([0.99, 1.08, 63/64])
-    translate([0.25, 0.15, -3.5])
-    baseShape();
-  }
-}
-
-module mainShape() {
-  union() {
-    binShape();
-    rotate(rotationVector) {
-      lineUp(numOfCylinders, spacing, "y", translationVector) {
-         intersection(){
-           resize([0, 2, 0]) translate([0, -0.5, 0.5])
-           cube(size = [cylinderD1, cylinderD2 * 1.5, cylinderHeight - 0.1], center = false);
-           translate([0, 0, 0.5])
-           cylinder(cylinderHeight - 0.1, cylinderD1, cylinderD2, $fn = 6);
-        }
+  // base plate
+  translate([0, 0, -1])
+  linear_extrude(height = 2, scale=[1.01, 1.01])
+  import("beadBin2.svg", dpi = 96, center = true);
+  // octoribs
+  rotate([0, 90, 0])
+  translate([0, 0, -35]){
+    mirrorCopy([0, 1, 0]){
+      difference(){
+        for (i = [0 : 5]){
+          translate([0, -i*4, i*4]){
+            octagon_prism(height = octoH -i * 4, radius = octoR);
+          }
+        };
+        translate([0.5, -octoH + 10, -1])
+        cube([50, octoH, 88]);
       }
-    };
+    }
   }
 }
-
-mainShape();
