@@ -170,7 +170,7 @@ module full_thread(ttn,st,sn,zt,lfxy,or,ir)
     for(i=[0:ttn-1])
     {
         for(j=[0:sn-1])
-lf0	   assign( pt = [ [0,                  0,                  i*st-st            ],
+          assign( pt = [[0,                  0,                  i*st-st            ],
                         [ir*cos(j*lfxy),     ir*sin(j*lfxy),     i*st+j*zt-st       ],
                         [ir*cos((j+1)*lfxy), ir*sin((j+1)*lfxy), i*st+(j+1)*zt-st   ],
             [0,0,i*st],

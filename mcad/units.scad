@@ -5,6 +5,9 @@
  * Dual licenced under Creative Commons Attribution-Share Alike 3.0 and LGPL2 or later
  */
 
+// When a small distance is needed to overlap shapes for boolean cutting, etc.
+epsilon = 0.01;
+phi=0.5*(sqrt(5) + 1 );
 
 mm = 1;
 cm = 10 * mm;
@@ -22,9 +25,3 @@ M4 = 4*mm;
 M5 = 5*mm;
 M6 = 6*mm;
 M8 = 8*mm;
-
-
-// When a small distance is needed to overlap shapes for boolean cutting, etc.
-epsilon = 0.01*mm;
-
-phi=0.5*(sqrt(5) + 1 );
