@@ -16,7 +16,7 @@ TAU = 2*PI;
 EPSILON = 0.01;
 FACETS=6;
 function half(n) = n / 2;
-function cos_over_sin(n) = cos(n)/sin(n);
+function cos_over_sin(angle) = cos(angle)/sin(angle);
 // Outer diameter of the thread
 // Step, traveling length per turn, also, tooth height, whatever...
 // Degrees for the shape of the tooth (XY plane = 0, Z = 90, btw, 0 and 90 will/should not work...)
@@ -81,14 +81,11 @@ module hex_screw(outer_diameter,step,step_shape_angle,lt,res,cs,distance_across_
     translate([0,0,height])
     if ( non_threaded_length == 0 ) cylinder(h=EPSILON, r=not_threaded_radius, center=true);
     else if ( non_threaded_diameter == -1 ) cylinder(h=non_threaded_length+EPSILON, r=not_threaded_radius, $fn=floor(outer_diameter*PI/res), center=false);
-    else if ( non_threaded_diameter == 0 ) {
-      union() {
-        cylinder(h=non_threaded_length-step/2, r=outer_diameter/2, $fn=floor(outer_diameter*PI/res), center=false);
-        translate([0,0,non_threaded_length-step/2])
-        cylinder(h=step/2, r1=outer_diameter/2, r2=not_threaded_radius, $fn=floor(outer_diameter*PI/res), center=false);
-      }
-    }
-    else cylinder(h=non_threaded_length, r=non_threaded_diameter/2, $fn=non_threaded_diameter*PI/res, center=false);
+    else if ( non_threaded_diameter == 0 ) union() {
+      cylinder(h=non_threaded_length-step/2, r=outer_diameter/2, $fn=floor(outer_diameter*PI/res), center=false);
+      translate([0,0,non_threaded_length-step/2])
+      cylinder(h=step/2, r1=outer_diameter/2, r2=not_threaded_radius, $fn=floor(outer_diameter*PI/res), center=false);
+    } else cylinder(h=non_threaded_length, r=non_threaded_diameter/2, $fn=non_threaded_diameter*PI/res, center=false);
     translate([0,0,non_threaded_length+height]) screw_thread(outer_diameter,step,step_shape_angle,lt,res,cs);
   }
 }
@@ -100,29 +97,15 @@ module hex_screw_0(outer_diameter,step,step_shape_angle,lt,res,cs,distance_acros
     hex_head_0(height,distance_across_flats);
 
     translate([0,0,height])
-    if ( non_threaded_length == 0 ) {
+    if ( non_threaded_length == 0 )
       cylinder(h=EPSILON, r=not_threaded_radius, center=true);
-    }
-    else {
-      if ( non_threaded_diameter == -1 ) {
-        cylinder(h=non_threaded_length+EPSILON, r=not_threaded_radius, $fn=floor(outer_diameter*PI/res), center=false);
-      }
-      else if ( non_threaded_diameter == 0 ) {
-        union() {
-          cylinder(h=non_threaded_length-step/2,
-               r=outer_diameter/2, $fn=floor(outer_diameter*PI/res), center=false);
-
-          translate([0,0,non_threaded_length-step/2])
-          cylinder(h=step/2,
-               r1=outer_diameter/2, r2=not_threaded_radius,
-               $fn=floor(outer_diameter*PI/res), center=false);
-        }
-      }
-      else {
-        cylinder(h=non_threaded_length, r=non_threaded_diameter/2, $fn=non_threaded_diameter*PI/res, center=false);
-      }
-    }
-
+    else if ( non_threaded_diameter == -1 )
+      cylinder(h=non_threaded_length+EPSILON, r=not_threaded_radius, $fn=floor(outer_diameter*PI/res), center=false);
+    else if ( non_threaded_diameter == 0 ) union() {
+      cylinder(h=non_threaded_length-step/2, r=outer_diameter/2, $fn=floor(outer_diameter*PI/res), center=false);
+      translate([0,0,non_threaded_length-step/2])
+      cylinder(h=step/2, r1=outer_diameter/2, r2=not_threaded_radius, $fn=floor(outer_diameter*PI/res), center=false);
+    } else cylinder(h=non_threaded_length, r=non_threaded_diameter/2, $fn=non_threaded_diameter*PI/res, center=false);
     translate([0,0,non_threaded_length+height]) screw_thread(outer_diameter,step,step_shape_angle,lt,res,cs);
   }
 }
@@ -209,7 +192,7 @@ module hex_head(height,distance_across_flats) {
   y2=height;
   intersection() {
     cylinder(h=height, r=rd0, $fn=FACETS, center=false);
-    rotate_extrude(convexity=10, $fn=6*round(distance_across_flats*TAU/6))
+    rotate_extrude(convexity=10, $fn=FACETS*round(distance_across_flats*TAU/6))
     polygon([
       [x0,y0],
       [x1,y0],

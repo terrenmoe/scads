@@ -7,12 +7,12 @@
  * v3 2/11/2014 - adjusted wing nut algorithm for better behaviour with unusual nut sizes and added ISO262 metric references
  * v4 31/12/2014 - added optional texture to socket heads, added ability to change the number of facets for a hex head
  * and adjusted wingnut base level on certain nut sizes
- * v5 11/1/2015 - added phillips and slot drive types and improved texture handling 
- * v6 21/2/2015 - added wing ratio to wingnuts 
+ * v5 11/1/2015 - added phillips and slot drive types and improved texture handling
+ * v6 21/2/2015 - added wing ratio to wingnuts
  * v7 6/3/2016 - added extended options to control number of facets on nuts, square sockets (or any number of facets) and socket depth control
  * v8 1/1/2017 - modified library code to remove dependence on deprecated 'assign' statement
- * 
- * This script generates nuts, bolts, washers and threaded rod using the library 
+ *
+ * This script generates nuts, bolts, washers and threaded rod using the library
  * script: polyScrewThead.scad (modified/updated version polyScrewThread_r1.scad)
  * http://www.thingiverse.com/thing:8796, CC Public Domain
  *
@@ -35,11 +35,11 @@ head_type              			= "hex";//[hex,socket,button,countersunk]
 //Drive type - Socket, Phillips, Slot (ignored for Hex head type and Rod)
 drive_type              		= "socket";//[socket,phillips,slot]
 //Distance between flats for the hex head or diameter for socket or button head (ignored for Rod)
-head_diameter    				= 12;	
+head_diameter    				= 12;
 //Height of the head (ignored for Rod)
-head_height  					= 5;	
+head_height  					= 5;
 //Diameter of drive type (ignored for Hex head and Rod)
-drive_diameter					= 5;	
+drive_diameter					= 5;
 //Width of slot aperture for phillips or slot drive types
 slot_width					    = 1;
 //Depth of slot aperture for slot drive type
@@ -47,34 +47,34 @@ slot_depth 					    = 2;
 //Surface texture (socket head only)
 texture                         = "exclude";//[include,exclude]
 //Outer diameter of the thread
-thread_outer_diameter           = 8;		
+thread_outer_diameter           = 8;
 //Thread step or Pitch (2mm works well for most applications ref. ISO262: M3=0.5,M4=0.7,M5=0.8,M6=1,M8=1.25,M10=1.5)
 thread_step    					= 2;
 //Step shape degrees (45 degrees is optimised for most printers ref. ISO262: 30 degrees)
-step_shape_degrees 				= 45;	
+step_shape_degrees 				= 45;
 //Length of the threaded section
-thread_length  					= 25;	
+thread_length  					= 25;
 //Countersink in both ends
-countersink  					= 2;	
+countersink  					= 2;
 //Length of the non-threaded section
-non_thread_length				= 0;	
+non_thread_length				= 0;
 //Diameter for the non-threaded section (-1: Same as inner diameter of the thread, 0: Same as outer diameter of the thread, value: The given value)
-non_thread_diameter				= 0;	
+non_thread_diameter				= 0;
 
 /* [Nut Options] */
 
 //Type: Normal or WingNut
 nut_type	                    = "normal";//[normal,wingnut]
 //Distance between flats for the hex nut
-nut_diameter    				= 12;	
+nut_diameter    				= 12;
 //Height of the nut
-nut_height	  				    = 6;	
-//Outer diameter of the bolt thread to match (usually set about 1mm larger than bolt diameter to allow easy fit - adjust to personal preferences) 
-nut_thread_outer_diameter     	= 9;		
+nut_height	  				    = 6;
+//Outer diameter of the bolt thread to match (usually set about 1mm larger than bolt diameter to allow easy fit - adjust to personal preferences)
+nut_thread_outer_diameter     	= 9;
 //Thread step or Pitch (2mm works well for most applications ref. ISO262: M3=0.5,M4=0.7,M5=0.8,M6=1,M8=1.25,M10=1.5)
 nut_thread_step    				= 2;
 //Step shape degrees (45 degrees is optimised for most printers ref. ISO262: 30 degrees)
-nut_step_shape_degrees 			= 45;	
+nut_step_shape_degrees 			= 45;
 //Wing radius ratio.  The proportional radius of the wing on the wing nut compared to the nut height value (default = 1)
 wing_ratio                      = 1;
 wing_radius=wing_ratio * nut_height;
@@ -97,7 +97,7 @@ socket_facets                   = 6;
 //Depth of hole in socket head. Default is 3.5
 socket_depth                    = 3.5;
 //Resolution (lower values for higher resolution, but may slow rendering)
-resolution    					= 0.5;	
+resolution    					= 0.5;
 nut_resolution    				= resolution;
 
 //Hex Bolt
@@ -121,7 +121,7 @@ if (type=="nut" && nut_type=="normal")
 //Wing Nut variation of hex nut. Cylinders added to each side of nut for easy turning - ideal for quick release applications
 if (type=="nut" && nut_type=="wingnut")
 {
-	rotate([0,0,30])hex_nut(nut_diameter,nut_height,nut_thread_step,nut_step_shape_degrees,nut_thread_outer_diameter,nut_resolution); //nut	
+	rotate([0,0,30])hex_nut(nut_diameter,nut_height,nut_thread_step,nut_step_shape_degrees,nut_thread_outer_diameter,nut_resolution); //nut
 	translate([(nut_diameter/2)+wing_radius-1,1.5,wing_radius/2+1])rotate([90,0,0])wing(); //attach wing
 	mirror(1,0,0)translate([(nut_diameter/2)+wing_radius-1,1.5,wing_radius/2+1])rotate([90,0,0])wing(); //attach wing
 }
@@ -133,8 +133,8 @@ module wing()
 		cylinder(r=wing_radius,h=3,$fn=64); //cylinder
 		union()
 		{
-			translate([-wing_radius,-wing_radius-1,-0.5])cube([wing_radius*2,wing_radius/2,wing_radius*2]); //remove overhang so flush with base of nut		
-			rotate([0,0,90])translate([-wing_radius,wing_radius-1,-0.5])cube([wing_radius*2,wing_radius/2,wing_radius*2]); //remove overhangs so flush with side of nut		
+			translate([-wing_radius,-wing_radius-1,-0.5])cube([wing_radius*2,wing_radius/2,wing_radius*2]); //remove overhang so flush with base of nut
+			rotate([0,0,90])translate([-wing_radius,wing_radius-1,-0.5])cube([wing_radius*2,wing_radius/2,wing_radius*2]); //remove overhangs so flush with side of nut
 		}
 	}
 }
@@ -219,15 +219,15 @@ module socket_screw(od,st,lf0,lt,rs,cs,df,hg,ntl,ntd)
 				{
 					socket_head(hg,df);
 				}
-			
+
         		if (head_type=="button")
 				{
-					button_head(hg,df);				
+					button_head(hg,df);
 				}
 
         		if (head_type=="countersunk")
 				{
-					countersunk_head(hg,df);				
+					countersunk_head(hg,df);
 				}
 
         		translate([0,0,hg])
@@ -248,7 +248,7 @@ module socket_screw(od,st,lf0,lt,rs,cs,df,hg,ntl,ntd)
                     		cylinder(h=ntl-st/2,r=od/2, $fn=floor(od*PI/rs), center=false);
                     		translate([0,0,ntl-st/2])
                     		cylinder(h=st/2,
-                             r1=od/2, r2=ntr, 
+                             r1=od/2, r2=ntr,
                              $fn=floor(od*PI/rs), center=false);
                 		}
             		}
@@ -274,7 +274,7 @@ module socket_screw(od,st,lf0,lt,rs,cs,df,hg,ntl,ntd)
 			else //slot
 			{
 				translate([-(drive_diameter)/2,slot_width/2,-0.001])rotate([90,0,0])cube([drive_diameter,slot_depth,slot_width]);
-			}	
+			}
 		}
 	}
 }
@@ -296,7 +296,7 @@ module socket_head(hg,df)
 		polygon([ [x0,y0],[x1,y0],[x2,y1],[x1,y2],[x0,y2] ]);
 	}
 
-	if (texture=="include") //add texture to socket head. Adjust texture density and size using texture variables above 
+	if (texture=="include") //add texture to socket head. Adjust texture density and size using texture variables above
 	{
 		for (i= [1:texture_points])
 		{
@@ -336,12 +336,12 @@ module countersunk_head(hg,df)
 	}
 }
 
-/* Library included below to allow customizer functionality    
- *   
+/* Library included below to allow customizer functionality
+ *
  * polyScrewThread_r1.scad    by aubenc @ Thingiverse
  *
  * Modified by mike_mattala @ Thingiverse 1/1/2017 to remove deprecated assign
- * 
+ *
  * This script contains the library modules that can be used to generate
  * threaded rods, screws and nuts.
  *
@@ -413,7 +413,7 @@ module hex_screw(od,st,lf0,lt,rs,cs,df,hg,ntl,ntd)
 
                     translate([0,0,ntl-st/2])
                     cylinder(h=st/2,
-                             r1=od/2, r2=ntr, 
+                             r1=od/2, r2=ntr,
                              $fn=floor(od*PI/rs), center=false);
                 }
             }
@@ -455,7 +455,7 @@ module hex_screw_0(od,st,lf0,lt,rs,cs,df,hg,ntl,ntd)
 
                     translate([0,0,ntl-st/2])
                     cylinder(h=st/2,
-                             r1=od/2, r2=ntr, 
+                             r1=od/2, r2=ntr,
                              $fn=floor(od*PI/rs), center=false);
                 }
             }
@@ -521,7 +521,7 @@ module full_thread(ttn,st,sn,zt,lfxy,or,ir)
                  [ir*cos(j*lfxy),     ir*sin(j*lfxy),     i*st+j*zt          ],
                  [ir*cos((j+1)*lfxy), ir*sin((j+1)*lfxy), i*st+(j+1)*zt      ],
                  [0,0,i*st+st]];
-               
+
             polyhedron(points=pt,faces=[[1,0,3],[1,3,6],[6,3,8],[1,6,4], //changed triangles to faces (to be deprecated)
 										[0,1,2],[1,4,2],[2,4,5],[5,4,6],[5,6,7],[7,6,8],
 										[7,8,3],[0,2,3],[3,2,7],[7,2,5]	]);
@@ -560,14 +560,14 @@ module hex_head_0(hg,df)
 module hex_countersink_ends(chg,cod,clf,crs,hg)
 {
     translate([0,0,-0.1])
-    cylinder(h=chg+0.01, 
-             r1=cod/2, 
+    cylinder(h=chg+0.01,
+             r1=cod/2,
              r2=cod/2-(chg+0.1)*cos(clf)/sin(clf),
              $fn=floor(cod*PI/crs), center=false);
 
     translate([0,0,hg-chg+0.1])
-    cylinder(h=chg+0.01, 
+    cylinder(h=chg+0.01,
              r1=cod/2-(chg+0.1)*cos(clf)/sin(clf),
-             r2=cod/2, 
+             r2=cod/2,
              $fn=floor(cod*PI/crs), center=false);
 }

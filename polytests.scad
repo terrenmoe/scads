@@ -8,7 +8,7 @@
  *
  * CC Public Domain
  */
-include <polyScrewThread.scad>
+include <polyScrewThread_r2.scad>
 
 PI=3.141592;
 
@@ -64,7 +64,7 @@ PI=3.141592;
  *                  value - The given value
  *
  */
-// hex_screw(15,4,55,30,1.5,2,24,8,0,0);
+hex_screw(15,4,60,30,2,2,24,8,0,0);
 
 
 /* Example 04.
