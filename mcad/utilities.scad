@@ -6,9 +6,14 @@
  */
 
 include <units.scad>
-
+function dia(r) = ((r * 2)^2 / 2) ^ 0.5;
+function i2mm(inches) = inches * mm_per_inch;
 function squ(a) = a * a;
-
+function which_axis(axis = "x") = [
+  len(search("x", axis, 1)),
+  len(search("y", axis, 1)),
+  len(search("z", axis, 1))
+];
 // Takes 2 3d vectors and returns
 // the square root of
 //   the summation of
@@ -28,9 +33,9 @@ function length2(a) = sqrt( squ(a[0]) + squ(a[1]) );
 
 function normalized(a) = a / (max(distance([0,0,0], a), 0.00001));
 
-function normalized_axis(a) = a == "x" ? [1, 0, 0]:
-                   a == "y" ? [0, 1, 0]:
-                   a == "z" ? [0, 0, 1]: normalized(a);
+function normalized_axis(a) = a == "x" ? X:
+                   a == "y" ? Y:
+                   a == "z" ? Z: normalized(a);
 
 function angleOfNormalizedVector(n) = [0, -atan2(n[2], length2([n[0], n[1]])), atan2(n[1], n[0]) ];
 

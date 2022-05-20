@@ -1,9 +1,8 @@
-use <missile/missile.scad>
 use <mirrorCopy.scad>
 use <mcad/polyholes.scad>
 include <mcad/units.scad>
-use <polyScrewThread_r2.scad>
 use <mcad/regular_shapes.scad>
+
 // Clamp dims
 hClamp = 14;
 sClamp = 0.75;
@@ -15,9 +14,9 @@ hCylinder = 20;
 
 module tip(cH = 1, cR = 1, cyH = 1, centered = true) {
   union() {
-    translate([0, 0, -cH - 0.001]) {
+    translate([0, 0, -cH - epsilon]) {
       cone(height = cH, radius = cR, center = centered);
-      translate([0, 0, -cyH + 0.001])
+      translate([0, 0, -cyH + epsilon])
       cylinder(cyH, cR, cR, center = centered);
     }
   }

@@ -37,7 +37,7 @@ module reg_polygon(sides, radius) {
 
 module regular_polygon(sides, radius)
 {
-  function dia(r) = sqrt(pow(r*2,2)/2);  //sqrt((r*2^2)/2) if only we had an exponention op
+  function dia(r) = ((r * 2)^2 / 2) ^ 0.5;
   if(sides<2) square([radius,0]);
   if(sides==3) triangle(radius);
   if(sides==4) square([dia(radius),dia(radius)],center=true);
@@ -89,19 +89,22 @@ module dodecagon(radius)
   regular_polygon(12,radius);
 }
 
-module ring(inside_diameter, thickness){
+module ring(inside_diameter, thickness)
+{
   difference(){
     circle(r=(inside_diameter+thickness*2)/2);
     circle(r=inside_diameter/2);
   }
 }
 
-module ellipse(width, height) {
+module ellipse(width, height)
+{
   scale([1, height/width, 1]) circle(r=width/2);
 }
 
 // The ratio of length and width is about 1.39 for a real egg
-module egg_outline(width, length){
+module egg_outline(width, length)
+{
     translate([0, width/2, 0]) union(){
         rotate([0, 0, 180]) difference(){
             ellipse(width, 2*length-width);
@@ -259,4 +262,4 @@ module egg(width, length){
 
 // Tests:
 
-test_square_pyramid(){square_pyramid(10, 20, 30);}
+// test_square_pyramid(){square_pyramid(10, 20, 30);}
